@@ -4,7 +4,7 @@ type Props = {
 }
 
 const Column = ({ children, className }: Props) => {
-  return <div className={`${className || ''}`.trim()}>{children}</div>
+  return <div className={`grow-0 shrink-0 ${className || ''}`.trim()}>{children}</div>
 }
 
 export default Column

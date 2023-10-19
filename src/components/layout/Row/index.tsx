@@ -6,7 +6,7 @@ type Props = {
 }
 
 const Row = ({ children, className }: Props) => {
-  return <div className={`${className || ''}`.trim()}>{children}</div>
+  return <div className={`flex flex-wrap ${className || ''}`.trim()}>{children}</div>
 }
 
 export default Row
