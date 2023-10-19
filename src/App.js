@@ -24,13 +24,21 @@ function App() {
             <FilterType />
             <div className="grid gap-10 grid-cols-4 mt-10">
               {products.map((product) => (
-                <Product key={product.id} {...product} />
+                <Product
+                  key={product.id}
+                  product={product}
+                  image={<Product.Image />}
+                  name={<Product.Name />}
+                  price={<Product.Price />}
+                  author={<Product.Author />}
+                />
               ))}
             </div>
-            <div className='text-center'>
-            <Button className='bg-primary mt-14 h-[4.375rem] w-80 justify-center px-8'>View more</Button>
+            <div className="text-center">
+              <Button className="bg-primary mt-14 h-[4.375rem] w-80 justify-center px-8">
+                View more
+              </Button>
             </div>
-            
           </Column>
         </Row>
       </div>

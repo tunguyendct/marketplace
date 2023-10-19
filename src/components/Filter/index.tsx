@@ -1,4 +1,3 @@
-import React from 'react'
 import Button from '../layout/Button'
 import SearchForm from '../SearchForm'
 import PriceRange from './PriceRange'
@@ -12,12 +11,12 @@ const Filter = () => {
       <PriceRange />
       <FilterSelect />
       <FilterSelect />
-      <div className='flex justify-between'>
+      <div className='flex gap-x-10'>
         <Button className="pl-0">
           <CrossCircledIcon className="" />
           Reset filter
         </Button>
-        <Button className=" bg-pink-500">Search</Button>
+        <Button className="px-12 bg-primary">Search</Button>
       </div>
     </div>
   )
