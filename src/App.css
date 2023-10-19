@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  @apply text-white;
+}
 .container {
   @apply 2xl:max-w-[104rem]
 }
