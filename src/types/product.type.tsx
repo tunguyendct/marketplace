@@ -1,7 +1,17 @@
+import { Status } from "./response.type"
+
+export type ProductsResponse = {
+  status: Status
+  data: {
+    total: number
+    authors: Product[]
+  }
+}
+
 export type Product = {
   id: string
   name: string
-  imageSrc: string
+  image: string
   price: number
   author: {
     avatar: string

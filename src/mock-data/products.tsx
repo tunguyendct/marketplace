@@ -1,10 +1,10 @@
-import { Product } from '../types/product'
+import { Product } from '../types/product.type'
 
 const product: Product = {
   id: '1',
   name: 'The DJ',
   price: 2.75,
-  imageSrc: 'the-dj.png',
+  image: 'the-dj.png',
   author: {
     avatar: 'author-avatar.png',
     name: 'Ghozali_Ghozalu',

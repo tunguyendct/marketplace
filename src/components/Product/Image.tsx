@@ -10,7 +10,7 @@ const ProductImage = () => {
         {product.tier}
       </span>
       <img
-        src={product.imageSrc}
+        src={product.image}
         alt={product.name}
         className="object-contain absolute bottom-0 left-1/2 -translate-x-1/2"
       />

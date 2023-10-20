@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import { Product as ProductType } from '../../types/product'
+import { Product as ProductType } from '../../types/product.type'
 import ProductAuthor from './Author'
 import ProductContext from './context'
 import ProductImage from './Image'
