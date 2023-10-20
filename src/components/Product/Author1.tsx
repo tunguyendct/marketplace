@@ -14,7 +14,7 @@ const ProductAuthor = () => {
           alt={product.author.name}
         />
         <img
-          src="credit-badge.svg"
+          src="verified-badge.svg"
           width={12}
           height={12}
           className="w-3 h-3 absolute right-0 bottom-0 z-1"

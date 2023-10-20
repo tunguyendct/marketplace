@@ -1,10 +1,10 @@
 import { ReactNode } from 'react'
 import { Product as ProductType } from '../../types/product'
-import ProductAuthor from './author'
+import ProductAuthor from './Author1'
 import ProductContext from './context'
-import ProductImage from './image'
-import ProductName from './name'
-import ProductPrice from './price'
+import ProductImage from './Image1'
+import ProductName from './Name1'
+import ProductPrice from './Price1'
 
 type ProductProps = {
   product: ProductType
