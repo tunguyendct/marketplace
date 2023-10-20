@@ -1,13 +1,12 @@
-import Label from '../layout/Label'
 import Select from '../layout/Select'
+import { useFilterContext } from './context'
 
 const FilterSelect = () => {
-  return (
-    <div className="flex flex-col gap-y-4">
-      <Label>Tier</Label>
-      <Select />
-    </div>
-  )
+  const { options, placeholder } = useFilterContext()
+
+  if (!options) return <></>
+
+  return <Select options={options} placeholder={placeholder} />
 }
 
 export default FilterSelect

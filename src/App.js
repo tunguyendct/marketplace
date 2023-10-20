@@ -20,9 +20,9 @@ function App() {
           <Column className="basis-[24.5rem] max-w-[24.5rem] pr-5">
             <Sidebar />
           </Column>
-          <Column className="!grow !shrink basis-0 pl-5">
+          <Column className="!grow !shrink max-w-[calc(100%-24.5rem)] basis-0 pl-5 space-y-10">
             <FilterType />
-            <div className="grid gap-10 grid-cols-4 mt-10">
+            <div className="grid gap-10 grid-cols-4">
               {products.map((product) => (
                 <Product
                   key={product.id}
@@ -34,8 +34,8 @@ function App() {
                 />
               ))}
             </div>
-            <div className="text-center">
-              <Button className="bg-primary mt-14 h-[4.375rem] w-80 justify-center px-8">
+            <div className="text-center !mt-14">
+              <Button className="bg-primary h-[4.375rem] w-80 justify-center px-8">
                 View more
               </Button>
             </div>
