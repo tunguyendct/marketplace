@@ -6,5 +6,23 @@ body {
   @apply text-white;
 }
 .container {
-  @apply 2xl:max-w-[104rem]
+  @apply 2xl:max-w-[104rem];
+}
+.bg-common {
+  background-image: linear-gradient(to right, #49dd81, #22b4c6);
+}
+.bg-epic {
+  background-image: linear-gradient(to right, #dd5afe, #6366f1);
+}
+.bg-common {
+  background-image: linear-gradient(to right, #49dd81, #22b4c6);
+}
+.bg-rare {
+  background-image: linear-gradient(to right, #43a6f6, #5868f3);
+}
+.bg-legendary {
+  background-image: linear-gradient(to right, #fe955a, #f1da63);
+}
+.bg-mythic {
+  background-image: linear-gradient(to right, #fe5a5a, #f163d2);
 }

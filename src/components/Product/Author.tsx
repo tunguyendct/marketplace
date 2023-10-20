@@ -1,7 +1,8 @@
 import { useProductContext } from './context'
 
 const ProductAuthor = () => {
-  const {product} = useProductContext()
+  const { product } = useProductContext()
+  const { author } = product
 
   return (
     <div className="flex items-center gap-x-3">
@@ -14,11 +15,11 @@ const ProductAuthor = () => {
           alt={product.author.name}
         />
         <img
-          src="verified-badge.svg"
+          src={author.verified ? 'verified-icon.svg' : 'unverified-icon.svg'}
           width={12}
           height={12}
           className="w-3 h-3 absolute right-0 bottom-0 z-1"
-          alt="author-badge"
+          alt="author-icon"
         />
       </span>
       <span className="text-xs">{product.author.name}</span>

@@ -2,12 +2,18 @@ import HeartFilledIcon from '../../icons/HeartFilledIcon'
 import { useProductContext } from './context'
 
 const ProductImage = () => {
-  const {product} = useProductContext()
+  const { product } = useProductContext()
+
+  const { tier } = product
+
+  const tierClassName = tier.name.toLowerCase() || 'common'
 
   return (
-    <div className="rounded overflow-hidden relative bg-purple-500 before:block pt-[100%]">
+    <div
+      className={`rounded overflow-hidden relative before:block pt-[100%] bg-${tierClassName}`}
+    >
       <span className="absolute rounded bg-[rgba(49,59,69,0.5)] py-1 px-4 text-xs leading-5 top-2 left-2">
-        {product.tier}
+        {tier.name}
       </span>
       <img
         src={product.image}

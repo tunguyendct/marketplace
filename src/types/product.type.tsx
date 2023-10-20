@@ -1,10 +1,10 @@
-import { Status } from "./response.type"
+import { Status } from './response.type'
 
 export type ProductsResponse = {
   status: Status
   data: {
     total: number
-    authors: Product[]
+    products: Product[]
   }
 }
 
@@ -16,8 +16,9 @@ export type Product = {
   author: {
     avatar: string
     name: string
+    verified: boolean
   }
-  type: string
-  theme: string
-  tier: string
+  type: { name: string }
+  theme: { name: string }
+  tier: { name: string }
 }

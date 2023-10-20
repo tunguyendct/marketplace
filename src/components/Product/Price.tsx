@@ -6,7 +6,7 @@ const ProductPrice = () => {
   return (
     <div className="flex gap-x-2 justify-center">
       <img src="eth-logo.svg" width={8} height={14} alt="ETH" />
-      <span className="text-sm">{product.price}</span>
+      <span className="text-sm">{product.price} ETH</span>
     </div>
   )
 }
