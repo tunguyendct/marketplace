@@ -29,7 +29,7 @@ const FilterType = () => {
     return <></>
 
   return (
-    <div className="flex gap-6">
+    <div className="flex overflow-x-auto py-2 gap-6 no-scrollbar sm:py-0">
       <TypeItem
         isActive={filter.type === null}
         onClick={() => {
@@ -73,7 +73,7 @@ const TypeItem = ({
   return (
     <span
       onClick={onClick}
-      className={`px-4 h-11 items-center flex font-semibold bg-primary/40 rounded cursor-pointer${
+      className={`px-4 h-11 items-center flex whitespace-nowrap font-semibold bg-primary/40 rounded cursor-pointer${
         isActive ? ' !bg-primary' : ''
       } ${className || ''}`.trim()}
     >
@@ -84,7 +84,7 @@ const TypeItem = ({
 
 const Skeleton = () => {
   return (
-    <div className="flex gap-6">
+    <div className="flex gap-6 overflow-x-auto">
       {Array.from(Array(12), (_, index) => (
         <TypeItem key={index} className="!bg-neutral animate-pulse w-20" />
       ))}

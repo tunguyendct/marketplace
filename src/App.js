@@ -15,10 +15,17 @@ function App() {
     >
       <div className="container">
         <Row>
-          <Column className="basis-[24.5rem] max-w-[24.5rem] pr-5">
+          <Column className="lg:pr-5 lg:basis-[20rem] lg:max-w-[20rem] xl:basis-[24.5rem] xl:max-w-[24.5rem]">
+            <span>Click</span>
+            <div className='hidden lg:block'>
             <Sidebar />
+            </div>
+            <div>
+              <Sidebar />
+            </div>
+            
           </Column>
-          <Column className="!grow !shrink max-w-[calc(100%-24.5rem)] basis-0 pl-5 space-y-10">
+          <Column className="basic-full max-w-full space-y-10 lg:max-w-[calc(100%-20rem)] lg:!grow lg:!shrink lg:basis-0 lg:pl-5 xl:max-w-[calc(100%-24.5rem)]">
             <FilterType />
             <ProductGrid />
           </Column>

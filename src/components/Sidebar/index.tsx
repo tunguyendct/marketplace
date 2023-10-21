@@ -198,7 +198,7 @@ const Sidebar = () => {
           dispatch({ type: 'SET_SORT', payload: value as string })
         }}
       />
-      <div className="flex gap-x-10">
+      <div className="flex gap-x-10 lg:justify-between xl:justify-normal">
         <a
           className="button !pl-0"
           href="#"
@@ -210,7 +210,7 @@ const Sidebar = () => {
           <CrossCircledIcon className="" />
           Reset filter
         </a>
-        <button type="submit" className="button !px-12 bg-primary">
+        <button type="submit" className="button bg-primary lg:!px-8 xl:!px-12">
           Search
         </button>
       </div>

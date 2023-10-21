@@ -22,7 +22,7 @@ const ProductGrid = () => {
 
   return (
     <>
-      <div className="grid gap-10 grid-cols-4">
+      <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 xl:grid-cols-4">
         {data.pages.map((group, i) => (
           <Fragment key={i}>
             {group.products.length > 0 ? (
@@ -47,7 +47,7 @@ const ProductGrid = () => {
       {hasNextPage && (
         <div className="text-center !mt-14">
           <a
-            className="button bg-primary !h-[4.375rem] !w-80 justify-center"
+            className="button bg-primary !h-14 w-full sm:!h-[4.375rem] sm:!w-80 justify-center"
             onClick={(e) => {
               e.preventDefault()
               !isFetchingNextPage && fetchNextPage()
@@ -70,7 +70,7 @@ const ProductGrid = () => {
 
 const Skeleton = () => {
   return (
-    <div className="grid gap-10 grid-cols-4">
+    <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 xl:grid-cols-4">
       {Array.from(Array(12), (_, index) => (
         <SkeletonProduct key={index} />
       ))}

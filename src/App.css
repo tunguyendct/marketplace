@@ -9,7 +9,13 @@ body {
   @apply 2xl:max-w-[104rem];
 }
 .button {
-  @apply inline-flex cursor-pointer items-center gap-x-3 h-11 px-4 rounded font-semibold transition-opacity duration-300 hover:opacity-80;
+  @apply inline-flex cursor-pointer items-center gap-x-3 h-11 px-4 rounded font-semibold transition-opacity duration-300 whitespace-nowrap hover:opacity-80;
+}
+.no-scrollbar::-webkit-scrollbar {
+  @apply hidden;
+}
+.invisible-scrollbar::-webkit-scrollbar {
+  @apply invisible;
 }
 .bg-common {
   background-image: linear-gradient(to right, #49dd81, #22b4c6);
