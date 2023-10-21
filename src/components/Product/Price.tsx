@@ -1,3 +1,4 @@
+import { formatMoney } from '../../utils/format-money'
 import { useProductContext } from './context'
 
 const ProductPrice = () => {
@@ -6,7 +7,7 @@ const ProductPrice = () => {
   return (
     <div className="flex gap-x-2 justify-center">
       <img src="eth-logo.svg" width={8} height={14} alt="ETH" />
-      <span className="text-sm">{product.price} ETH</span>
+      <span className="text-sm">{formatMoney(product.price)}</span>
     </div>
   )
 }

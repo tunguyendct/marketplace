@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import * as RadixSlider from '@radix-ui/react-slider'
 import { PRICE } from '../../constants/filter'
+import { formatMoney } from '../../utils/format-money'
 import { useFilterContext } from './context'
 
 const { MIN_PRICE, MAX_PRICE } = PRICE
@@ -38,8 +39,8 @@ const FilterSlider = () => {
         <SliderThumb price={maxPrice} />
       </RadixSlider.Root>
       <div className="flex justify-between mt-2">
-        <span>{MIN_PRICE} ETH</span>
-        <span>{MAX_PRICE} ETH</span>
+        <span>{formatMoney(MIN_PRICE)}</span>
+        <span>{formatMoney(MAX_PRICE)}</span>
       </div>
     </>
   )
@@ -55,7 +56,7 @@ const SliderThumb = ({ price }: { price: number }) => {
       aria-label="Volume"
     >
       <div className="bg-primary text-sm rounded absolute flex w-24 text-white h-10 justify-center items-center bottom-10 left-1/2 -translate-x-1/2 opacity-0 after:w-0 after:h-0 after:border-solid after:border-8 after:border-b-0 after:border-transparent after:border-t-primary after:absolute after:-bottom-2 group-hover:opacity-100 transition-opacity">
-        {price} ETH
+        {formatMoney(price)}
       </div>
       <span
         className="w-4 h-4 block bg-primary rounded-full"
