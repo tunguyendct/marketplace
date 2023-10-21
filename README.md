@@ -1,70 +1,66 @@
-# Getting Started with Create React App
+# Marketplace
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Problem Statement
 
-## Available Scripts
+1. Search, filter (depends on the JSON you define)
 
-In the project directory, you can run:
+2. See more (load more data if you need)
 
-### `npm start`
+3. Refresh data after the 60s. (if you are FE: refresh to get JSON DATA)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+4. UI: You can style by yourself to achieve the requirements.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Layout design
+- CSS or choose a library UI
+- A sample figma design is for reference
 
-### `npm test`
+## Tech Stack
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**MERN Stack** (MongoDB, Express.js, React.js, and Nodejs)
 
-### `npm run build`
+- [Nodejs](https://nodejs.org/en): Backend
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- [Express.js](https://expressjs.com/): Backend framework
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- [MongoDB Atlas Database](https://www.mongodb.com/atlas/database): Database
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- [React](https://react.dev/): Frontend library
 
-### `npm run eject`
+- [Prisma](https://www.prisma.io): ORM
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Utilities:
+- [React Query](https://tanstack.com/query/latest): Asynchronous state management
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- [TailwindCSS](https://tailwindcss.com): CSS framework
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- [RadixUI](https://www.radix-ui.com): Unstyled UI components
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- [Zustand](https://github.com/pmndrs/zustand): State management
 
-## Learn More
+## Install
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+**1. Clone repo**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+git clone git@github.com:tunguyendct/marketplace.git && cd marketplace
+```
 
-### Code Splitting
+**2. Add `.env` files**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- Create `.env` file
 
-### Analyzing the Bundle Size
+- Copy content in `.env.example` into `.env`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+**3. Install**
 
-### Making a Progressive Web App
+```bash
+npm run install
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Run project
 
-### Advanced Configuration
+> You must start the server before running the project.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```bash
+npm run start
+```
