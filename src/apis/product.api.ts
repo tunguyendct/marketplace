@@ -1,4 +1,5 @@
 import API from '../constants/api'
+import { STATUS } from '../constants/response'
 import { FilterType } from '../types/filter.type'
 import { ProductsResponse } from '../types/product.type'
 
@@ -12,7 +13,12 @@ const listProducts = async ({
   page = 1,
 }: ListProductsProps): Promise<ProductsResponse> => {
   const res = await fetch(`${API.URL}/products?limit=${limit}&page=${page}`)
-  return res.json()
+  const result = await res.json()
+
+  if (result.status === STATUS.SUCCESS) {
+    return result
+  }
+  throw new Error('Fail to fetch product author')
 }
 
 export type SearchProductsProps = {
@@ -52,7 +58,12 @@ const searchProducts = async ({
   const res = await fetch(
     `${API.URL}/search/products?limit=${limit}&page=${page}${query}`
   )
-  return res.json()
+  const result = await res.json()
+
+  if (result.status === STATUS.SUCCESS) {
+    return result
+  }
+  throw new Error('Fail to fetch products')
 }
 
 export { listProducts, searchProducts }
