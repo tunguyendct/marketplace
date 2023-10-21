@@ -7,7 +7,7 @@ type NavigationType = {
 
 const Navigation = () => {
   return (
-    <ul className="flex gap-x-[3.75rem]">
+    <ul className="flex lg:gap-10 xl:gap-x-[3.75rem]">
       {navigation.map((nav, index) => (
         <NavigationItem key={index} item={nav} />
       ))}

@@ -22,7 +22,7 @@ function App() {
     >
       <Header />
       <Banner />
-      <div className="container pt-16 lg:pt-[7.5rem]">
+      <div className="container py-16 lg:py-[7.5rem]">
         <Row className="flex-col gap-y-4 lg:gap-y-0 lg:flex-row">
           <Column className="basis-full max-w-full lg:pr-5 lg:basis-[20rem] lg:max-w-[20rem] xl:basis-[24.5rem] xl:max-w-[24.5rem]">
             <div className="hidden lg:block">
