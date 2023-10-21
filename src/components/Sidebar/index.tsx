@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { useEffect, useMemo, useReducer } from 'react'
+import { useMemo, useReducer } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { listThemes } from '../../apis/theme.api'
 import { listTiers } from '../../apis/tiers.api'
@@ -99,10 +99,6 @@ const Sidebar = () => {
 
   const { filter: filterStore, setFilter, resetFilter } = useFilterStore()
 
-  useEffect(() => {
-    console.log({ filterStore })
-  }, [filterStore])
-
   const tierOptions = useMemo(() => {
     if (dataTiers && dataTiers.data) {
       const options = dataTiers.data.tiers.map((tier) => ({
@@ -141,8 +137,15 @@ const Sidebar = () => {
   }
 
   return (
-    <div className="space-y-8">
+    <form
+      className="space-y-8"
+      onSubmit={(e) => {
+        e.preventDefault()
+        handleSubmitFilter()
+      }}
+    >
       <SearchForm
+      defaultValue={filter.searchTerm}
         handleChange={(value) => {
           dispatch({ type: 'SET_SEARCH_TERM', payload: value })
         }}
@@ -207,18 +210,11 @@ const Sidebar = () => {
           <CrossCircledIcon className="" />
           Reset filter
         </a>
-        <a
-          href="#"
-          className="button !px-12 bg-primary"
-          onClick={(e) => {
-            e.preventDefault()
-            handleSubmitFilter()
-          }}
-        >
+        <button type="submit" className="button !px-12 bg-primary">
           Search
-        </a>
+        </button>
       </div>
-    </div>
+    </form>
   )
 }
 

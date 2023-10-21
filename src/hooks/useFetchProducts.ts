@@ -3,6 +3,7 @@ import { searchProducts, SearchProductsProps } from '../apis/product.api'
 import { PAGE_LIMIT } from '../constants'
 
 const useFetchProducts = ({
+  searchTerm,
   limit,
   type,
   theme,
@@ -11,7 +12,7 @@ const useFetchProducts = ({
   lte_price,
 }: SearchProductsProps) => {
   return useInfiniteQuery({
-    queryKey: ['search/products', type, tier, theme, gte_price, lte_price],
+    queryKey: ['search/products', searchTerm, type, tier, theme, gte_price, lte_price],
     queryFn: async ({ pageParam = 1 }) => {
       const controller = new AbortController()
 
@@ -20,6 +21,7 @@ const useFetchProducts = ({
       }, 5000)
 
       const result = await searchProducts({
+        searchTerm,
         page: pageParam,
         limit,
         type,

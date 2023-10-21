@@ -25,16 +25,20 @@ const ProductGrid = () => {
       <div className="grid gap-10 grid-cols-4">
         {data.pages.map((group, i) => (
           <Fragment key={i}>
-            {group.products.map((product) => (
-              <Product
-                key={product.id}
-                product={product}
-                image={<Product.Image />}
-                name={<Product.Name />}
-                price={<Product.Price />}
-                author={<Product.Author />}
-              />
-            ))}
+            {group.products.length > 0 ? (
+              group.products.map((product) => (
+                <Product
+                  key={product.id}
+                  product={product}
+                  image={<Product.Image />}
+                  name={<Product.Name />}
+                  price={<Product.Price />}
+                  author={<Product.Author />}
+                />
+              ))
+            ) : (
+              <div className="text-center col-end-5 col-start-1">Product not found</div>
+            )}
           </Fragment>
         ))}
       </div>
