@@ -15,11 +15,12 @@ export type Option = {
 type SelectProps = {
   placeholder?: string
   options: Option[]
+  handleValueChange: (value: string) => void
 }
 
-const Select = ({ placeholder, options }: SelectProps) => {
+const Select = ({ placeholder, options, handleValueChange }: SelectProps) => {
   return (
-    <RadixSelect.Root>
+    <RadixSelect.Root onValueChange={handleValueChange}>
       <RadixSelect.Trigger
         className="inline-flex items-center justify-between rounded px-4 border border-solid border-neutral h-11 gap-[5px] text-neutral shadow-[0_2px_10px] shadow-black/10 focus:shadow-[0_0_0_2px] focus:shadow-black data-[placeholder]:text-neutral outline-none"
         aria-label="Food"
@@ -31,8 +32,8 @@ const Select = ({ placeholder, options }: SelectProps) => {
       </RadixSelect.Trigger>
       <RadixSelect.Portal>
         <RadixSelect.Content className="overflow-hidden bg-white rounded shadow-[0px_10px_38px_-10px_rgba(22,_23,_24,_0.35),0px_10px_20px_-15px_rgba(22,_23,_24,_0.2)]">
-          <RadixSelect.ScrollUpButton className="flex items-center justify-center h-6 bg-black cursor-default">
-            <ChevronUpIcon />
+          <RadixSelect.ScrollUpButton className="flex items-center justify-center h-6 bg-white cursor-default">
+            <ChevronUpIcon className="text-slate w-5 h-5" />
           </RadixSelect.ScrollUpButton>
           <RadixSelect.Viewport className="px-4 shadow-[0_2px_10px]">
             <RadixSelect.Group>
@@ -41,8 +42,8 @@ const Select = ({ placeholder, options }: SelectProps) => {
               ))}
             </RadixSelect.Group>
           </RadixSelect.Viewport>
-          <RadixSelect.ScrollDownButton className="flex items-center justify-center h-[25px] bg-black cursor-default">
-            <ChevronDownIcon className="w-5 h-5" />
+          <RadixSelect.ScrollDownButton className="flex items-center justify-center h-[25px] bg-white cursor-default">
+            <ChevronDownIcon className="text-slate w-5 h-5" />
           </RadixSelect.ScrollDownButton>
         </RadixSelect.Content>
       </RadixSelect.Portal>

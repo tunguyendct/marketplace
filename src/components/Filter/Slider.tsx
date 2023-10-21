@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import * as RadixSlider from '@radix-ui/react-slider'
+import { useFilterContext } from './context'
 
 const MIN_PRICE = 0.01
 const MAX_PRICE = 200
 
 const FilterSlider = () => {
+  const {handleValueChange: handleValueCommit} = useFilterContext()
   const [minPrice, setMinPrice] = useState(MIN_PRICE)
   const [maxPrice, setMaxPrice] = useState(MAX_PRICE)
 
@@ -20,6 +22,7 @@ const FilterSlider = () => {
           setMinPrice(min)
           setMaxPrice(max)
         }}
+        onValueCommit={handleValueCommit}
       >
         <RadixSlider.Track className="relative grow h-full">
           <RadixSlider.Range
@@ -31,7 +34,7 @@ const FilterSlider = () => {
           />
         </RadixSlider.Track>
         <SliderThumb price={minPrice} />
-        <SliderThumb price={maxPrice}/>
+        <SliderThumb price={maxPrice} />
       </RadixSlider.Root>
       <div className="flex justify-between mt-2">
         <span>{MIN_PRICE} ETH</span>
@@ -41,7 +44,7 @@ const FilterSlider = () => {
   )
 }
 
-const SliderThumb = ({price}: {price: number}) => {
+const SliderThumb = ({ price }: { price: number }) => {
   return (
     <RadixSlider.Thumb
       className="cursor-pointer block w-6 h-6 bg-black shadow-[0_2px_10px] p-[3px] rounded-full focus:outline-none border border-solid border-white group"

@@ -5,6 +5,7 @@ const FilterContext = createContext<{
   label?: string
   placeholder?: string
   options?: Option[]
+  handleValueChange: (value: string | number | number[]) => void
 } | null>(null)
 
 export const useFilterContext = () => {

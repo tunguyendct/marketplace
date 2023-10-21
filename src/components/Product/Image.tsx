@@ -16,6 +16,9 @@ const ProductImage = () => {
         {tier.name}
       </span>
       <img
+        loading="lazy"
+        width={235}
+        height={197}
         src={product.image}
         alt={product.name}
         className="object-contain absolute bottom-0 left-1/2 -translate-x-1/2"

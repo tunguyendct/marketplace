@@ -1,8 +1,11 @@
 import { ReactNode } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { listTypes } from '../../apis/types.api'
+import useFilterStore from '../../stores/filter.store'
 
 const FilterType = () => {
+  const { filter, setFilter } = useFilterStore()
+
   const { data, isError, isLoading } = useQuery({
     queryKey: ['types'],
     queryFn: () => {
@@ -27,26 +30,52 @@ const FilterType = () => {
 
   return (
     <div className="flex gap-6">
-      <TypeItem>All</TypeItem>
+      <TypeItem
+        isActive={filter.type === null}
+        onClick={() => {
+          setFilter({
+            ...filter,
+            type: null,
+          })
+        }}
+      >
+        All
+      </TypeItem>
       {data?.data.types.map((type) => (
-        <TypeItem key={type.id}>{type.name}</TypeItem>
+        <TypeItem
+          isActive={filter.type === type.id}
+          onClick={() => {
+            setFilter({
+              ...filter,
+              type: type.id,
+            })
+          }}
+          key={type.id}
+        >
+          {type.name}
+        </TypeItem>
       ))}
     </div>
   )
 }
 
 const TypeItem = ({
+  isActive,
   children,
   className,
+  onClick,
 }: {
+  isActive?: boolean
   children?: ReactNode
   className?: string
+  onClick?: () => void
 }) => {
   return (
     <span
-      className={`px-4 h-11 items-center flex font-semibold bg-primary/40 rounded ${
-        className || ''
-      }`.trim()}
+      onClick={onClick}
+      className={`px-4 h-11 items-center flex font-semibold bg-primary/40 rounded cursor-pointer${
+        isActive ? ' !bg-primary' : ''
+      } ${className || ''}`.trim()}
     >
       {children}
     </span>

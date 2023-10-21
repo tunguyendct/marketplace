@@ -1,15 +1,16 @@
 export type FilterType = {
-  type?: string
-  theme?: string
-  tier?: string
-  gte_price?: number | string
-  lte_price?: number | string
-  sort?: Sort
+  searchTerm?: string | null
+  type?: string | null
+  theme?: string | null
+  tier?: string | null
+  gte_price?: number | string | null
+  lte_price?: number | string | null
+  sort?: Sort | null
 }
 
-type Sort =
-  | 'create-asc'
-  | 'create-desc'
+export type Sort =
+  | 'created-asc'
+  | 'created-desc'
   | 'name-asc'
   | 'name-desc'
   | 'price-asc'

@@ -15,7 +15,7 @@ const listProducts = async ({
   return res.json()
 }
 
-type SearchProductsProps = {
+export type SearchProductsProps = {
   limit?: number
   page?: number
 } & FilterType
@@ -24,6 +24,7 @@ const searchProducts = async ({
   limit = 20,
   page = 1,
   type,
+  searchTerm,
   theme,
   tier,
   gte_price,
@@ -32,12 +33,21 @@ const searchProducts = async ({
 }: SearchProductsProps): Promise<ProductsResponse> => {
   const filterKeys = { type, theme, tier, gte_price, lte_price, sort }
 
-  const query = Object.keys(filterKeys).reduce((acc, filter) => {
-    if (!!filter && !!filterKeys[filter as keyof FilterType]) {
-      acc += `&${filter}=${filterKeys[filter as keyof FilterType]}`
+  let query = Object.keys(filterKeys).reduce((acc, filter) => {
+    if (
+      !!filter &&
+      !!filterKeys[filter as keyof Omit<FilterType, 'searchTerm'>]
+    ) {
+      acc += `&${filter}=${
+        filterKeys[filter as keyof Omit<FilterType, 'searchTerm'>]
+      }`
     }
     return acc
   }, '')
+
+  if (!!searchTerm) {
+    query += `&q=${searchTerm}`
+  }
 
   const res = await fetch(
     `${API.URL}/search/products?limit=${limit}&page=${page}${query}`

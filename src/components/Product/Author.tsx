@@ -10,6 +10,7 @@ const ProductAuthor = () => {
         <img
           width={32}
           height={32}
+          loading='lazy'
           src={product.author.avatar}
           className="rounded-full"
           alt={product.author.name}

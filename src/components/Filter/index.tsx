@@ -8,55 +8,40 @@ import FilterSelect from './Select'
 import FilterSlider from './Slider'
 
 export type FilterData = TiersResponse['data'] | ThemesResponse['data']
-type FilterType = 'tier' | 'theme' | 'productType' | 'price'
 
 type FilterProps = {
-  type: FilterType
   data: {
     label?: string
     placeholder?: string
     isError?: boolean
     isLoading?: boolean
-    filterOptions?: FilterData
+    options?: Option[]
   }
   label?: ReactNode
   select?: ReactNode
   slider?: ReactNode
+  handleValueChange: (value: string | number | number[]) => void
 }
 
-const Filter = ({ type, data, label, select, slider }: FilterProps) => {
+const Filter = ({
+  data,
+  label,
+  select,
+  slider,
+  handleValueChange,
+}: FilterProps) => {
   const { isLoading, isError } = data
 
   if (isLoading) return <Skeleton />
 
   if (isError) return <></>
 
-  const { filterOptions } = data
-
-  let options: Option[] = []
-
-  switch (type) {
-    case 'tier':
-      options = (filterOptions as TiersResponse['data']).tiers.map((tier) => ({
-        value: tier.id,
-        text: tier.name,
-      }))
-      break
-    case 'theme':
-      options = (filterOptions as ThemesResponse['data']).themes.map(
-        (theme) => ({
-          value: theme.id,
-          text: theme.name,
-        })
-      )
-      break
-  }
-
   return (
     <FilterContext.Provider
       value={{
         ...data,
-        options,
+        options: data.options,
+        handleValueChange,
       }}
     >
       <div className="flex flex-col gap-y-4">
