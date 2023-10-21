@@ -73,7 +73,7 @@ const TypeItem = ({
   return (
     <span
       onClick={onClick}
-      className={`px-4 h-11 items-center flex whitespace-nowrap font-semibold bg-primary/40 rounded cursor-pointer${
+      className={`px-4 h-11 items-center flex whitespace-nowrap font-medium bg-primary/40 rounded cursor-pointer${
         isActive ? ' !bg-primary' : ''
       } ${className || ''}`.trim()}
     >
