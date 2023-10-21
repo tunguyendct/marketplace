@@ -52,6 +52,7 @@ const DrawerFilter = ({
       </div>
 
       <div
+        onClick={() => setIsFilterOpen(false)}
         className={`fixed top-0 right-0 bottom-0 left-0 z-[1] bg-black/80 duration-300 transition-all${
           isFilterOpen
             ? ' !pointer-events-auto visible opacity-100'
