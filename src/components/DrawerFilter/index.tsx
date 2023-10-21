@@ -42,7 +42,7 @@ const DrawerFilter = ({
             >
               <Cross1Icon className="w-5 h-5" />
             </button>
-            <h4 className="text-xl font-semibold text-center">Filter</h4>
+            <h4 className="text-xl font-medium text-center">Filter</h4>
             <div className="w-10 h-10"></div>
           </div>
           <div className="p-4 h-full overflow-x-visible overflow-y-auto">

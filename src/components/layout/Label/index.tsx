@@ -10,7 +10,7 @@ const Label = ({ children, className, htmlFor }: Props) => {
   return (
     <label
       htmlFor={htmlFor}
-      className={`font-semibold uppercase text-neutral active:text-white ${className}`.trim()}
+      className={`font-medium uppercase text-neutral active:text-white ${className}`.trim()}
     >
       {children}
     </label>
