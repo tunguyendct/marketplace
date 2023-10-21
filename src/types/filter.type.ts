@@ -3,8 +3,8 @@ export type FilterType = {
   type?: string | null
   theme?: string | null
   tier?: string | null
-  gte_price?: number | string | null
-  lte_price?: number | string | null
+  gte_price?: number | null
+  lte_price?: number | null
   sort?: Sort | null
 }
 

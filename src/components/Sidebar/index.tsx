@@ -3,12 +3,17 @@ import { useMemo, useReducer } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { listThemes } from '../../apis/theme.api'
 import { listTiers } from '../../apis/tiers.api'
+import { PRICE } from '../../constants/filter'
+import { useIsMobile } from '../../hooks/useIsMobile'
 import CrossCircledIcon from '../../icons/CrossCircledIcon'
 import useFilterStore from '../../stores/filter.store'
+import useStore from '../../stores/index.store'
 import { FilterType, Sort as SortType } from '../../types/filter.type'
 import Filter from '../Filter'
 import SearchForm from '../SearchForm'
 import Sort from '../Sort'
+
+const { MIN_PRICE, MAX_PRICE } = PRICE
 
 type Payload = string | SortType | null | number
 type ActionType =
@@ -21,6 +26,9 @@ type ActionType =
   | 'SET_INITIAL'
 
 const Sidebar = () => {
+  const isMobile = useIsMobile()
+  const { setIsFilterOpen } = useStore()
+
   const {
     data: dataTiers,
     isLoading: isTiersLoading,
@@ -89,13 +97,19 @@ const Sidebar = () => {
           lte_price: action.payload as number,
         }
       case 'SET_INITIAL':
-        return {}
+        return {
+          gte_price: MIN_PRICE,
+          lte_price: MAX_PRICE,
+        }
       default:
         return state
     }
   }
 
-  const [filter, dispatch] = useReducer(reducer, {})
+  const [filter, dispatch] = useReducer(reducer, {
+    gte_price: MIN_PRICE,
+    lte_price: MAX_PRICE,
+  })
 
   const { filter: filterStore, setFilter, resetFilter } = useFilterStore()
 
@@ -138,10 +152,11 @@ const Sidebar = () => {
 
   return (
     <form
-      className="space-y-8"
+      className="space-y-8 overflow-hidden lg:overflow-visible"
       onSubmit={(e) => {
         e.preventDefault()
         handleSubmitFilter()
+        !!isMobile && setIsFilterOpen(false)
       }}
     >
       <SearchForm
@@ -168,6 +183,7 @@ const Sidebar = () => {
       <Filter
         data={{
           label: 'Tier',
+          value: filter.tier || '',
           placeholder: 'Select a Tier',
           isLoading: isTiersLoading,
           isError: isTiersError,
@@ -182,6 +198,7 @@ const Sidebar = () => {
       <Filter
         data={{
           label: 'Theme',
+          value: filter.theme || '',
           placeholder: 'Select a Theme',
           isLoading: isThemesLoading,
           isError: isThemesError,
@@ -194,23 +211,28 @@ const Sidebar = () => {
         select={<Filter.Select />}
       />
       <Sort
+        value={filter.sort || ''}
         handleValueChange={(value) => {
           dispatch({ type: 'SET_SORT', payload: value as string })
         }}
       />
-      <div className="flex gap-x-10 lg:justify-between xl:justify-normal">
+      <div className="flex gap-x-10 justify-between xl:justify-normal">
         <a
           className="button !pl-0"
           href="#"
           onClick={(e) => {
             e.preventDefault()
             handleResetFilter()
+            !!isMobile && setIsFilterOpen(false)
           }}
         >
           <CrossCircledIcon className="" />
           Reset filter
         </a>
-        <button type="submit" className="button bg-primary lg:!px-8 xl:!px-12">
+        <button
+          type="submit"
+          className="button text-white bg-primary !px-12 lg:!px-8 xl:!px-12"
+        >
           Search
         </button>
       </div>

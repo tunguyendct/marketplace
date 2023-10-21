@@ -29,7 +29,7 @@ const FilterType = () => {
     return <></>
 
   return (
-    <div className="flex overflow-x-auto py-2 gap-6 no-scrollbar sm:py-0">
+    <div className="flex overflow-x-auto py-2 gap-4 lg:gap-6 no-scrollbar sm:py-0">
       <TypeItem
         isActive={filter.type === null}
         onClick={() => {

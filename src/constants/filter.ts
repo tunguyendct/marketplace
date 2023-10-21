@@ -31,3 +31,6 @@ export const SORT_OPTIONS: SortOption[] = [
     text: 'Alphabetically, Z-A',
   },
 ]
+
+const PRICE = { MIN_PRICE: 0.01, MAX_PRICE: 200 }
+export { PRICE }

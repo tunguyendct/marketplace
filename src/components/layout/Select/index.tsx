@@ -15,6 +15,7 @@ export type Option = {
 type SelectProps = {
   placeholder?: string
   options: Option[]
+  value?: string
   defaultValue?: string
   handleValueChange: (value: string) => void
 }
@@ -22,16 +23,18 @@ type SelectProps = {
 const Select = ({
   placeholder,
   defaultValue,
+  value,
   options,
   handleValueChange,
 }: SelectProps) => {
   return (
     <RadixSelect.Root
+      value={value}
       defaultValue={defaultValue}
       onValueChange={handleValueChange}
     >
       <RadixSelect.Trigger
-        className="inline-flex items-center justify-between rounded px-4 border border-solid border-neutral h-11 gap-[5px] text-neutral shadow-[0_2px_10px] shadow-black/10 focus:shadow-[0_0_0_2px] focus:shadow-black data-[placeholder]:text-neutral outline-none"
+        className="inline-flex items-center justify-between rounded px-4 border border-solid border-neutral h-11 gap-[5px] text-neutral shadow-[0_2px_10px] shadow-black/10 data-[placeholder]:text-neutral outline-none"
         aria-label="Food"
       >
         <RadixSelect.Value placeholder={placeholder} />
@@ -39,23 +42,21 @@ const Select = ({
           <ChevronDownIcon className="w-5 h-5" />
         </RadixSelect.Icon>
       </RadixSelect.Trigger>
-      <RadixSelect.Portal>
-        <RadixSelect.Content className="overflow-hidden bg-white rounded shadow-[0px_10px_38px_-10px_rgba(22,_23,_24,_0.35),0px_10px_20px_-15px_rgba(22,_23,_24,_0.2)]">
-          <RadixSelect.ScrollUpButton className="flex items-center justify-center h-6 bg-white cursor-default">
-            <ChevronUpIcon className="text-slate w-5 h-5" />
-          </RadixSelect.ScrollUpButton>
-          <RadixSelect.Viewport className="px-4 shadow-[0_2px_10px]">
-            <RadixSelect.Group>
-              {options.map((option) => (
-                <SelectItem key={option.value} {...option} />
-              ))}
-            </RadixSelect.Group>
-          </RadixSelect.Viewport>
-          <RadixSelect.ScrollDownButton className="flex items-center justify-center h-[25px] bg-white cursor-default">
-            <ChevronDownIcon className="text-slate w-5 h-5" />
-          </RadixSelect.ScrollDownButton>
-        </RadixSelect.Content>
-      </RadixSelect.Portal>
+      <RadixSelect.Content className="overflow-hidden bg-white rounded shadow-[0px_10px_38px_-10px_rgba(22,_23,_24,_0.35),0px_10px_20px_-15px_rgba(22,_23,_24,_0.2)]">
+        <RadixSelect.ScrollUpButton className="flex items-center justify-center h-6 bg-white cursor-default">
+          <ChevronUpIcon className="text-slate w-5 h-5" />
+        </RadixSelect.ScrollUpButton>
+        <RadixSelect.Viewport className="px-4 shadow-[0_2px_10px]">
+          <RadixSelect.Group>
+            {options.map((option) => (
+              <SelectItem key={option.value} {...option} />
+            ))}
+          </RadixSelect.Group>
+        </RadixSelect.Viewport>
+        <RadixSelect.ScrollDownButton className="flex items-center justify-center h-[25px] bg-white cursor-default">
+          <ChevronDownIcon className="text-slate w-5 h-5" />
+        </RadixSelect.ScrollDownButton>
+      </RadixSelect.Content>
     </RadixSelect.Root>
   )
 }

@@ -4,6 +4,7 @@ import { Option } from '../layout/Select'
 const FilterContext = createContext<{
   label?: string
   placeholder?: string
+  value?: string | number[]
   defaultValue?: string
   options?: Option[]
   handleValueChange: (value: string | number | number[]) => void

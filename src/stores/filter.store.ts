@@ -1,13 +1,15 @@
 import { create } from 'zustand'
 import { FilterType } from '../types/filter.type'
+import { PRICE } from '../constants/filter'
+const {MIN_PRICE, MAX_PRICE} = PRICE
 
 const initialFilter = {
   searchTerm: null,
   type: null,
   theme: null,
   tier: null,
-  gte_price: null,
-  lte_price: null,
+  gte_price: MIN_PRICE,
+  lte_price: MAX_PRICE,
   sort: null,
 }
 

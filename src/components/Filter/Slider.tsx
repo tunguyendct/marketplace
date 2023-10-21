@@ -1,12 +1,13 @@
 import { useState } from 'react'
 import * as RadixSlider from '@radix-ui/react-slider'
+import { PRICE } from '../../constants/filter'
 import { useFilterContext } from './context'
 
-const MIN_PRICE = 0.01
-const MAX_PRICE = 200
+const { MIN_PRICE, MAX_PRICE } = PRICE
 
 const FilterSlider = () => {
-  const {handleValueChange: handleValueCommit} = useFilterContext()
+  const { handleValueChange: handleValueCommit } = useFilterContext()
+
   const [minPrice, setMinPrice] = useState(MIN_PRICE)
   const [maxPrice, setMaxPrice] = useState(MAX_PRICE)
 
@@ -53,7 +54,7 @@ const SliderThumb = ({ price }: { price: number }) => {
       }}
       aria-label="Volume"
     >
-      <div className="bg-primary text-sm rounded absolute flex w-24 h-10 justify-center items-center bottom-10 left-1/2 -translate-x-1/2 opacity-0 after:w-0 after:h-0 after:border-solid after:border-8 after:border-b-0 after:border-transparent after:border-t-primary after:absolute after:-bottom-2 group-hover:opacity-100 transition-opacity">
+      <div className="bg-primary text-sm rounded absolute flex w-24 text-white h-10 justify-center items-center bottom-10 left-1/2 -translate-x-1/2 opacity-0 after:w-0 after:h-0 after:border-solid after:border-8 after:border-b-0 after:border-transparent after:border-t-primary after:absolute after:-bottom-2 group-hover:opacity-100 transition-opacity">
         {price} ETH
       </div>
       <span
