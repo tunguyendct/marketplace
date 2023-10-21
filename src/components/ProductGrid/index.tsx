@@ -37,7 +37,9 @@ const ProductGrid = () => {
                 />
               ))
             ) : (
-              <div className="text-center col-end-5 col-start-1">Product not found</div>
+              <div className="text-center col-end-5 col-start-1">
+                Product not found
+              </div>
             )}
           </Fragment>
         ))}
@@ -48,7 +50,7 @@ const ProductGrid = () => {
             className="button bg-primary !h-[4.375rem] !w-80 justify-center"
             onClick={(e) => {
               e.preventDefault()
-              fetchNextPage()
+              !isFetchingNextPage && fetchNextPage()
             }}
             href="#"
           >

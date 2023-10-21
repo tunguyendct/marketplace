@@ -17,7 +17,7 @@ type ProductProps = {
 const Product = ({ product, image, name, price, author }: ProductProps) => {
   return (
     <ProductContext.Provider value={{ product }}>
-      <div className="rounded-[0.625rem] bg-slate/60 p-4 space-y-6">
+      <div className="rounded-[0.625rem] bg-slate/60 p-4 space-y-6 transition-shadow hover:cursor-pointer hover:shadow-[0px_0px_24px_-1px_rgba(255,255,255,0.2)]">
         {image}
         <div className="space-y-4">
           <div className="flex justify-between items-center">
