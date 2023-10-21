@@ -12,7 +12,15 @@ const useFetchProducts = ({
   lte_price,
 }: SearchProductsProps) => {
   return useInfiniteQuery({
-    queryKey: ['search/products', searchTerm, type, tier, theme, gte_price, lte_price],
+    queryKey: [
+      'search/products',
+      searchTerm,
+      type,
+      tier,
+      theme,
+      gte_price,
+      lte_price,
+    ],
     queryFn: async ({ pageParam = 1 }) => {
       const controller = new AbortController()
 

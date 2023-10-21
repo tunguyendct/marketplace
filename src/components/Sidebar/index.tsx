@@ -145,7 +145,7 @@ const Sidebar = () => {
       }}
     >
       <SearchForm
-      defaultValue={filter.searchTerm}
+        value={filter.searchTerm}
         handleChange={(value) => {
           dispatch({ type: 'SET_SEARCH_TERM', payload: value })
         }}

@@ -10,7 +10,8 @@ const Sort = ({
     <Filter
       data={{
         label: 'Order by',
-        placeholder: 'Date',
+        placeholder: 'Date, new to old',
+        defaultValue:'created-desc',
         options: SORT_OPTIONS,
       }}
       label={<Filter.Label />}

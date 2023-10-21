@@ -13,6 +13,7 @@ type FilterProps = {
   data: {
     label?: string
     placeholder?: string
+    defaultValue?: string
     isError?: boolean
     isLoading?: boolean
     options?: Option[]

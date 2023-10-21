@@ -15,12 +15,21 @@ export type Option = {
 type SelectProps = {
   placeholder?: string
   options: Option[]
+  defaultValue?: string
   handleValueChange: (value: string) => void
 }
 
-const Select = ({ placeholder, options, handleValueChange }: SelectProps) => {
+const Select = ({
+  placeholder,
+  defaultValue,
+  options,
+  handleValueChange,
+}: SelectProps) => {
   return (
-    <RadixSelect.Root onValueChange={handleValueChange}>
+    <RadixSelect.Root
+      defaultValue={defaultValue}
+      onValueChange={handleValueChange}
+    >
       <RadixSelect.Trigger
         className="inline-flex items-center justify-between rounded px-4 border border-solid border-neutral h-11 gap-[5px] text-neutral shadow-[0_2px_10px] shadow-black/10 focus:shadow-[0_0_0_2px] focus:shadow-black data-[placeholder]:text-neutral outline-none"
         aria-label="Food"
