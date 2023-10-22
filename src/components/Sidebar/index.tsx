@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { useMemo, useReducer } from 'react'
+import { useMemo, useReducer, useRef } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { listThemes } from '../../apis/theme.api'
 import { listTiers } from '../../apis/tiers.api'
@@ -10,6 +10,7 @@ import useFilterStore from '../../stores/filter.store'
 import useStore from '../../stores/index.store'
 import { FilterType, Sort as SortType } from '../../types/filter.type'
 import Filter from '../Filter'
+import { SliderRef } from '../Filter/Slider'
 import SearchForm from '../SearchForm'
 import Sort from '../Sort'
 
@@ -27,6 +28,7 @@ type ActionType =
 
 const Sidebar = () => {
   const isMobile = useIsMobile()
+  const sliderRef = useRef<SliderRef>(null)
   const { setIsFilterOpen } = useStore()
 
   const {
@@ -97,6 +99,7 @@ const Sidebar = () => {
           lte_price: action.payload as number,
         }
       case 'SET_INITIAL':
+        sliderRef.current?.setNewValues([MIN_PRICE, MAX_PRICE])
         return {
           gte_price: MIN_PRICE,
           lte_price: MAX_PRICE,
@@ -178,7 +181,7 @@ const Sidebar = () => {
           }
         }}
         label={<Filter.Label />}
-        slider={<Filter.Slider />}
+        slider={<Filter.Slider ref={sliderRef} />}
       />
       <Filter
         data={{

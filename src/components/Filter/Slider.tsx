@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { forwardRef, useImperativeHandle, useRef, useState } from 'react'
 import * as RadixSlider from '@radix-ui/react-slider'
 import { PRICE } from '../../constants/filter'
 import { formatMoney } from '../../utils/format-money'
@@ -6,16 +6,35 @@ import { useFilterContext } from './context'
 
 const { MIN_PRICE, MAX_PRICE } = PRICE
 
-const FilterSlider = () => {
+export type SliderRef = {
+  setNewValues: (values: number[]) => void
+}
+
+const FilterSlider = forwardRef<SliderRef>((_, ref) => {
+  const sliderRef = useRef<RadixSlider.SliderProps & HTMLSpanElement>(null)
+
   const { handleValueChange: handleValueCommit } = useFilterContext()
 
   const [minPrice, setMinPrice] = useState(MIN_PRICE)
   const [maxPrice, setMaxPrice] = useState(MAX_PRICE)
 
+  useImperativeHandle(
+    ref,
+    () => ({
+      setNewValues(newValues) {
+        setMinPrice(newValues[0])
+        setMaxPrice(newValues[1])
+      },
+    }),
+    []
+  )
+
   return (
     <>
-      <RadixSlider.Root
+      <RadixSlider.Slider
+        ref={sliderRef}
         className="relative flex items-center select-none touch-none h-2 bg-slate rounded-sm w-full mt-2"
+        value={[minPrice, maxPrice]}
         defaultValue={[MIN_PRICE, MAX_PRICE]}
         max={MAX_PRICE}
         min={MIN_PRICE}
@@ -37,14 +56,14 @@ const FilterSlider = () => {
         </RadixSlider.Track>
         <SliderThumb price={minPrice} />
         <SliderThumb price={maxPrice} />
-      </RadixSlider.Root>
+      </RadixSlider.Slider>
       <div className="flex justify-between mt-2">
         <span>{formatMoney(MIN_PRICE)}</span>
         <span>{formatMoney(MAX_PRICE)}</span>
       </div>
     </>
   )
-}
+})
 
 const SliderThumb = ({ price }: { price: number }) => {
   return (
