@@ -54,7 +54,7 @@ git clone git@github.com:tunguyendct/marketplace.git && cd marketplace
 **3. Install**
 
 ```bash
-npm run install
+npm install
 ```
 
 ## Run project
